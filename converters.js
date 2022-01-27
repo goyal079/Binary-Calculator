@@ -22,4 +22,4 @@ function stringToBinary(string) {
     .join("");
   return x;
 }
-export { binary };
+export { binary, stringToBinary };
