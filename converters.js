@@ -13,13 +13,36 @@ function binary(input) {
 }
 
 //Primary Binary converters
+
+// string
 function stringToBinary(string) {
-  let x = string
-    .split("")
-    .map((char) => {
-      return binary(char.charCodeAt(0));
-    })
-    .join("");
-  return x;
+  if (isNaN(string)) {
+    let x = string
+      .split("")
+      .map((char) => {
+        return binary(char.charCodeAt(0));
+      })
+      .join("");
+    return x;
+  } else {
+    return "Try using the other converters for numeric values";
+  }
 }
+
+// octal
+function octalToBinary(oct) {
+  let x = oct.split("");
+  let value;
+  if (x.indexOf("8") != -1 || x.indexOf("8") != -1) {
+    value = "Invalid octal value";
+  } else {
+    value = x
+      .map((num) => {
+        return binary(num);
+      })
+      .join("");
+  }
+  return value;
+}
+console.log(octalToBinary("20"));
 export { binary, stringToBinary };
