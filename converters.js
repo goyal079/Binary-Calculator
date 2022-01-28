@@ -8,8 +8,11 @@ function decToBin(num) {
 }
 
 function binary(input) {
+  if (isNaN(input)) {
+    return "Try again with a valid decimal input";
+  }
   let bin = decToBin(input);
-  return bin.split("").reverse().join("").padStart(8, 0); // returns 8 bit binaries
+  return bin.split("").reverse().join(""); // returns 8 bit binaries
 }
 
 //Primary Binary converters
@@ -20,7 +23,7 @@ function stringToBinary(string) {
     let x = string
       .split("")
       .map((char) => {
-        return binary(char.charCodeAt(0));
+        return binary(char.charCodeAt(0)).padStart(8, 0);
       })
       .join("");
     return x;
@@ -31,18 +34,18 @@ function stringToBinary(string) {
 
 // octal
 function octalToBinary(oct) {
-  let x = oct.split("");
-  let value;
-  if (x.indexOf("8") != -1 || x.indexOf("8") != -1) {
-    value = "Invalid octal value";
+  var x = oct.split("");
+
+  if (isNaN(oct) || x.indexOf("8") != -1 || x.indexOf("9") != -1) {
+    return "Invalid octal value";
   } else {
-    value = x
+    let value = x
       .map((num) => {
-        return binary(num);
+        return binary(num).padStart(3, 0);
       })
       .join("");
+    return Number(value);
   }
-  return value;
 }
-console.log(octalToBinary("20"));
-export { binary, stringToBinary };
+console.log(octalToBinary("9"));
+export { binary, stringToBinary, octalToBinary };

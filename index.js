@@ -1,5 +1,5 @@
 import { question } from "readline-sync";
-import { binary, stringToBinary } from "./converters.js";
+import { binary, stringToBinary, octalToBinary } from "./converters.js";
 
 let response = question(
   "Select the type of data you want to convert to binary;\n0. Exit\n1. String\n2. Decimal \n3. Octal\n4. HexaDecimal: "
@@ -11,11 +11,15 @@ switch (response) {
     break;
   case "1":
     let str = question("Enter string to convert to binary: ");
-    console.log(`Here's your string in binary:\n${stringToBinary(str)}`);
+    console.log(`Here's your output:\n${stringToBinary(str)}`);
     break;
   case "2":
-    let dec = parseFloat(question("Enter decimal to convert to binary: "));
-    console.log(`Here's the binary for your input decimal: ${binary(dec)}`);
+    let dec = question("Enter decimal to convert to binary: ");
+    console.log(`Here's your output: ${binary(dec)}`);
+    break;
+  case "3":
+    let oct = question("Enter octal to convert to binary: ");
+    console.log(`Here's your output: ${octalToBinary(oct)}`);
     break;
   default:
     console.log("Try again with a valid input");
