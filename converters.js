@@ -34,8 +34,7 @@ function stringToBinary(string) {
 
 // octal
 function octalToBinary(oct) {
-  var x = oct.split("");
-
+  let x = oct.split("");
   if (isNaN(oct) || x.indexOf("8") != -1 || x.indexOf("9") != -1) {
     return "Invalid octal value";
   } else {
@@ -47,5 +46,37 @@ function octalToBinary(oct) {
     return Number(value);
   }
 }
-console.log(octalToBinary("9"));
-export { binary, stringToBinary, octalToBinary };
+// hexa
+function hexToBinary(hex) {
+  if (/[g-zG-Z]/.test(hex)) {
+    return "Invalid Hex Value";
+  } else {
+    const exp = [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+    ];
+    let x = hex
+      .split("")
+      .reverse()
+      .reduce((sum, num, index) => {
+        return sum + exp.indexOf(num.toUpperCase()) * Math.pow(16, index);
+      }, 0);
+    return binary(x);
+  }
+}
+console.log(hexToBinary("291Ac"));
+export { binary, stringToBinary, octalToBinary, hexToBinary };
